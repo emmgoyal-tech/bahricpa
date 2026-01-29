@@ -34,7 +34,7 @@ export default function About() {
               </div>
             ) : (
               <img
-                src="/punit-bahri.jpg"
+                src={`${import.meta.env.BASE_URL}punit-bahri.jpg`}
                 alt="Punit Bahri, CPA"
                 className="w-full aspect-[4/5] object-cover rounded-lg shadow-lg"
                 onError={() => setImgError(true)}
