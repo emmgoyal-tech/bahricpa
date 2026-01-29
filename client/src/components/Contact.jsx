@@ -9,8 +9,8 @@ const contactInfo = [
 ];
 
 const hours = [
-  { day: 'Monday - Friday', time: '9:00 AM - 6:00 PM' },
-  { day: 'Saturday', time: '10:00 AM - 2:00 PM' },
+  { day: 'Monday – Friday', time: '9:00 AM – 6:00 PM' },
+  { day: 'Saturday', time: '10:00 AM – 2:00 PM' },
   { day: 'Sunday', time: 'Closed' },
 ];
 
@@ -18,7 +18,7 @@ export default function Contact() {
   const [form, setForm] = useState({ full_name: '', email: '', phone: '', subject: '', message: '', website: '' });
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
-  const [status, setStatus] = useState(null); // 'success' | 'error'
+  const [status, setStatus] = useState(null);
 
   const validate = () => {
     const errs = {};
@@ -60,37 +60,43 @@ export default function Contact() {
     }
   };
 
-  const inputClass =
-    'w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#C9A84C] focus:ring-2 focus:ring-[#C9A84C]/20 outline-none transition-colors text-[#2D2D2D]';
+  const inputBase =
+    'w-full px-5 py-4 bg-[#FAF8F5] border border-[#E8E4DE] text-[#1A1A1A] text-[15px] placeholder-[#8A8A8A] focus:border-[#C9A84C] focus:bg-white transition-all duration-300';
 
   return (
-    <section id="contact" className="py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-4">
+    <section id="contact" className="py-28 bg-white relative">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.7 }}
+          className="text-center mb-20"
         >
+          <span className="text-[#C9A84C] text-[13px] uppercase tracking-[0.3em] font-medium">
+            Get Started
+          </span>
           <h2
-            className="text-3xl md:text-4xl font-bold text-[#1B2A4A] mb-4"
+            className="text-[clamp(2rem,4vw,3rem)] font-bold text-[#0F1D35] mt-4 mb-6"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            Get In Touch
+            Begin Your <span className="italic">Consultation</span>
           </h2>
-          <p className="text-[#6B7280] max-w-2xl mx-auto text-lg">
-            Ready to take control of your financial future? Reach out today for a free consultation.
+          <div className="section-divider mb-6" />
+          <p className="text-[#5A5A5A] max-w-xl mx-auto text-lg leading-relaxed font-light">
+            Ready to take control of your financial future? Reach out today.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Form */}
+        <div className="grid lg:grid-cols-5 gap-16">
+          {/* Form — 3/5 */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="lg:col-span-3"
           >
             <form onSubmit={handleSubmit} className="space-y-5" noValidate>
               {/* Honeypot */}
@@ -105,68 +111,66 @@ export default function Contact() {
                 />
               </div>
 
-              <div>
-                <input
-                  type="text"
-                  name="full_name"
-                  placeholder="Full Name *"
-                  value={form.full_name}
-                  onChange={handleChange}
-                  className={inputClass}
-                />
-                {errors.full_name && <p className="text-red-500 text-sm mt-1">{errors.full_name}</p>}
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <input
+                    type="text"
+                    name="full_name"
+                    placeholder="Full Name *"
+                    value={form.full_name}
+                    onChange={handleChange}
+                    className={inputBase}
+                  />
+                  {errors.full_name && <p className="text-red-500 text-sm mt-2">{errors.full_name}</p>}
+                </div>
+                <div>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address *"
+                    value={form.email}
+                    onChange={handleChange}
+                    className={inputBase}
+                  />
+                  {errors.email && <p className="text-red-500 text-sm mt-2">{errors.email}</p>}
+                </div>
               </div>
 
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email Address *"
-                  value={form.email}
-                  onChange={handleChange}
-                  className={inputClass}
-                />
-                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
-              </div>
-
-              <div>
+              <div className="grid sm:grid-cols-2 gap-5">
                 <input
                   type="tel"
                   name="phone"
                   placeholder="Phone Number"
                   value={form.phone}
                   onChange={handleChange}
-                  className={inputClass}
+                  className={inputBase}
                 />
-              </div>
-
-              <div>
                 <input
                   type="text"
                   name="subject"
                   placeholder="Subject"
                   value={form.subject}
                   onChange={handleChange}
-                  className={inputClass}
+                  className={inputBase}
                 />
               </div>
 
               <div>
                 <textarea
                   name="message"
-                  placeholder="Your Message *"
-                  rows={5}
+                  placeholder="Tell us how we can help *"
+                  rows={6}
                   value={form.message}
                   onChange={handleChange}
-                  className={inputClass + ' resize-none'}
+                  className={inputBase + ' resize-none'}
                 />
-                {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
+                {errors.message && <p className="text-red-500 text-sm mt-2">{errors.message}</p>}
               </div>
 
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full bg-[#C9A84C] text-[#1B2A4A] py-4 rounded-lg font-semibold text-lg hover:bg-[#b8963f] transition-colors disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="group w-full bg-[#C9A84C] text-[#0F1D35] py-4 font-semibold text-[15px] uppercase tracking-wider hover:bg-[#D4BA6A] transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-3"
               >
                 {submitting && (
                   <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
@@ -175,65 +179,84 @@ export default function Contact() {
                   </svg>
                 )}
                 {submitting ? 'Sending...' : 'Send Message'}
+                {!submitting && (
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                )}
               </button>
 
               {status === 'success' && (
-                <p className="text-green-600 text-center font-medium">
-                  Thank you! Your message has been sent. We will be in touch soon.
-                </p>
+                <div className="text-center py-4 bg-green-50 border border-green-200">
+                  <p className="text-green-700 font-medium">
+                    Thank you! Your message has been sent. We will be in touch soon.
+                  </p>
+                </div>
               )}
               {status === 'error' && (
-                <p className="text-red-500 text-center font-medium">
-                  Something went wrong. Please try again or call us directly.
-                </p>
+                <div className="text-center py-4 bg-red-50 border border-red-200">
+                  <p className="text-red-600 font-medium">
+                    Something went wrong. Please try again or call us directly.
+                  </p>
+                </div>
               )}
             </form>
           </motion.div>
 
-          {/* Contact Info */}
+          {/* Contact Info — 2/5 */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-8"
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="lg:col-span-2 space-y-8"
           >
-            {contactInfo.map((item) => (
-              <div key={item.label} className="flex gap-4">
-                <div className="w-12 h-12 bg-[#1B2A4A] rounded-lg flex items-center justify-center flex-shrink-0">
-                  <item.icon className="text-[#C9A84C] text-lg" />
-                </div>
-                <div>
-                  <p className="font-semibold text-[#1B2A4A]">{item.label}</p>
-                  {item.href ? (
-                    <a href={item.href} className="text-[#6B7280] hover:text-[#C9A84C] transition-colors">
-                      {item.value}
-                    </a>
-                  ) : (
-                    <p className="text-[#6B7280]">{item.value}</p>
-                  )}
-                </div>
-              </div>
-            ))}
+            <div className="bg-[#0F1D35] p-10">
+              <h3
+                className="text-xl font-semibold text-white mb-8"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                Contact Information
+              </h3>
 
-            {/* Business Hours */}
-            <div className="flex gap-4">
-              <div className="w-12 h-12 bg-[#1B2A4A] rounded-lg flex items-center justify-center flex-shrink-0">
-                <FaClock className="text-[#C9A84C] text-lg" />
-              </div>
-              <div>
-                <p className="font-semibold text-[#1B2A4A] mb-2">Business Hours</p>
-                {hours.map((h) => (
-                  <p key={h.day} className="text-[#6B7280] text-sm">
-                    <span className="font-medium">{h.day}:</span> {h.time}
-                  </p>
+              <div className="space-y-6">
+                {contactInfo.map((item) => (
+                  <div key={item.label} className="flex gap-4">
+                    <div className="w-10 h-10 border border-[#C9A84C]/30 flex items-center justify-center flex-shrink-0">
+                      <item.icon className="text-[#C9A84C] text-sm" />
+                    </div>
+                    <div>
+                      <p className="text-white/40 text-[12px] uppercase tracking-wider mb-1">{item.label}</p>
+                      {item.href ? (
+                        <a href={item.href} className="text-white/80 hover:text-[#C9A84C] transition-colors text-[15px]">
+                          {item.value}
+                        </a>
+                      ) : (
+                        <p className="text-white/80 text-[15px]">{item.value}</p>
+                      )}
+                    </div>
+                  </div>
                 ))}
               </div>
-            </div>
 
-            {/* Map Placeholder */}
-            <div className="w-full h-56 bg-[#F8F9FA] rounded-lg flex items-center justify-center border border-gray-200">
-              <p className="text-[#6B7280]">Map - 123 Main St, Great Neck, NY 11021</p>
+              {/* Divider */}
+              <div className="w-full h-[1px] bg-white/10 my-8" />
+
+              {/* Business Hours */}
+              <div>
+                <div className="flex items-center gap-3 mb-5">
+                  <FaClock className="text-[#C9A84C] text-sm" />
+                  <p className="text-white/40 text-[12px] uppercase tracking-wider">Business Hours</p>
+                </div>
+                <div className="space-y-2">
+                  {hours.map((h) => (
+                    <div key={h.day} className="flex justify-between text-[15px]">
+                      <span className="text-white/60">{h.day}</span>
+                      <span className="text-white/80 font-medium">{h.time}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>

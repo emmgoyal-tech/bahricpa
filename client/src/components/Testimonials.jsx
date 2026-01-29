@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaStar, FaQuoteLeft } from 'react-icons/fa';
+import { FaStar } from 'react-icons/fa';
 
 const testimonials = [
   {
@@ -24,26 +24,29 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-24 bg-[#F8F9FA]">
-      <div className="max-w-6xl mx-auto px-4">
+    <section id="testimonials" className="py-28 bg-[#FAF8F5] relative">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.7 }}
+          className="text-center mb-20"
         >
+          <span className="text-[#C9A84C] text-[13px] uppercase tracking-[0.3em] font-medium">
+            Testimonials
+          </span>
           <h2
-            className="text-3xl md:text-4xl font-bold text-[#1B2A4A] mb-4"
+            className="text-[clamp(2rem,4vw,3rem)] font-bold text-[#0F1D35] mt-4 mb-6"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            What Our Clients Say
+            Voices of <span className="italic">Trust</span>
           </h2>
-          <p className="text-[#6B7280] max-w-2xl mx-auto text-lg">
-            Hear from the individuals and businesses who trust us with their financial future.
-          </p>
+          <div className="section-divider" />
         </motion.div>
 
+        {/* Testimonial cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((t, i) => (
             <motion.div
@@ -51,18 +54,42 @@ export default function Testimonials() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white rounded-lg shadow-lg p-8 relative"
+              transition={{ duration: 0.5, delay: i * 0.12 }}
+              className="bg-white p-10 border border-[#E8E4DE] relative group hover:shadow-[0_8px_40px_rgba(15,29,53,0.06)] transition-all duration-500"
             >
-              <FaQuoteLeft className="text-[#C9A84C] text-3xl mb-4 opacity-30" />
-              <p className="text-[#2D2D2D] leading-relaxed mb-6 italic">"{t.quote}"</p>
-              <div className="flex text-[#C9A84C] gap-1 mb-3">
+              {/* Large decorative quote mark */}
+              <div
+                className="absolute top-6 right-8 text-7xl font-bold text-[#C9A84C]/[0.07] leading-none select-none"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                "
+              </div>
+
+              {/* Stars */}
+              <div className="flex text-[#C9A84C] gap-1 mb-6 text-sm">
                 {[...Array(5)].map((_, j) => (
                   <FaStar key={j} />
                 ))}
               </div>
-              <p className="font-semibold text-[#1B2A4A]">{t.name}</p>
-              <p className="text-sm text-[#6B7280]">{t.title}</p>
+
+              {/* Quote */}
+              <p
+                className="text-[#0F1D35] leading-[1.8] mb-8 text-[16px] italic font-light relative z-10"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                "{t.quote}"
+              </p>
+
+              {/* Attribution */}
+              <div className="flex items-center gap-4 pt-6 border-t border-[#E8E4DE]">
+                <div className="w-10 h-10 bg-[#0F1D35] flex items-center justify-center text-[#C9A84C] text-sm font-bold">
+                  {t.name.charAt(0)}
+                </div>
+                <div>
+                  <p className="font-semibold text-[#0F1D35] text-[15px]">{t.name}</p>
+                  <p className="text-[#8A8A8A] text-[13px]">{t.title}</p>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
