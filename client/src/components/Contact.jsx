@@ -15,14 +15,14 @@ const hours = [
 ];
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '', website: '' });
+  const [form, setForm] = useState({ full_name: '', email: '', phone: '', subject: '', message: '', website: '' });
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState(null); // 'success' | 'error'
 
   const validate = () => {
     const errs = {};
-    if (!form.name.trim()) errs.name = 'Full name is required.';
+    if (!form.full_name.trim()) errs.full_name = 'Full name is required.';
     if (!form.email.trim()) errs.email = 'Email is required.';
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errs.email = 'Please enter a valid email address.';
     if (!form.message.trim()) errs.message = 'Message is required.';
@@ -52,7 +52,7 @@ export default function Contact() {
       });
       if (!res.ok) throw new Error('Failed');
       setStatus('success');
-      setForm({ name: '', email: '', phone: '', subject: '', message: '', website: '' });
+      setForm({ full_name: '', email: '', phone: '', subject: '', message: '', website: '' });
     } catch {
       setStatus('error');
     } finally {
@@ -108,13 +108,13 @@ export default function Contact() {
               <div>
                 <input
                   type="text"
-                  name="name"
+                  name="full_name"
                   placeholder="Full Name *"
-                  value={form.name}
+                  value={form.full_name}
                   onChange={handleChange}
                   className={inputClass}
                 />
-                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+                {errors.full_name && <p className="text-red-500 text-sm mt-1">{errors.full_name}</p>}
               </div>
 
               <div>
