@@ -1,0 +1,282 @@
+<project_specification>
+  <project_name>Bahri Associates</project_name>
+
+  <overview>
+    A modern, professional single-page website for Bahri Associates, a CPA firm led by Punit Bahri with 20 years of experience in Great Neck, NY. The site showcases the firm's services, builds trust with potential clients, and provides easy ways to get in touch. The design emphasizes attention to detail, trustworthiness, and a polished dark navy and gold aesthetic.
+  </overview>
+
+  <technology_stack>
+    <frontend>
+      <framework>React with Vite</framework>
+      <styling>Tailwind CSS</styling>
+      <animations>Framer Motion for scroll animations</animations>
+      <port>3000</port>
+    </frontend>
+    <backend>
+      <runtime>Node.js with Express</runtime>
+      <database>SQLite with better-sqlite3</database>
+      <port>3001</port>
+    </backend>
+    <communication>
+      <api>REST API for contact form</api>
+    </communication>
+  </technology_stack>
+
+  <prerequisites>
+    <environment_setup>
+      - Node.js 18+ installed
+      - npm package manager
+    </environment_setup>
+  </prerequisites>
+
+  <feature_count>35</feature_count>
+
+  <security_and_access_control>
+    <user_roles>
+      <role name="visitor">
+        <permissions>
+          - Can view all public sections
+          - Can submit contact form
+          - Cannot access admin or backend
+        </permissions>
+      </role>
+    </user_roles>
+    <authentication>
+      <method>None (public website)</method>
+    </authentication>
+    <sensitive_operations>
+      - Contact form includes honeypot field for spam protection
+      - Form inputs sanitized server-side
+    </sensitive_operations>
+  </security_and_access_control>
+
+  <core_features>
+    <header_navigation>
+      - Fixed/sticky header with firm logo and name "Bahri Associates"
+      - Navigation links: Home, Services, About, Why Us, Testimonials, Contact
+      - Smooth scroll to each section on click
+      - Mobile hamburger menu with slide-out navigation
+      - Phone CTA button in header with phone icon
+      - Active nav link highlighting based on current scroll position
+    </header_navigation>
+
+    <hero_section>
+      - Large headline emphasizing 20 years of experience and attention to detail
+      - Subheadline with value proposition for clients
+      - Primary CTA button: "Schedule a Consultation" scrolls to contact section
+      - Secondary CTA button: "Our Services" scrolls to services section
+      - Background with subtle navy/gold gradient or geometric pattern
+    </hero_section>
+
+    <services_section>
+      - Section title: "Our Services"
+      - 6 service cards in responsive grid (3x2 desktop, 2x3 tablet, 1x6 mobile):
+        1. Business Planning - strategic planning for business growth
+        2. Risk & Financial Advisory - risk management and financial guidance
+        3. Mutual Funds - investment advisory services
+        4. Wealth Accumulation - long-term wealth building strategies
+        5. Tax Management - tax preparation, planning, and compliance
+        6. Audit & Assurance - audit services and financial assurance
+      - Each card has an icon, title, and brief description
+      - Hover effect with gold border or elevated shadow
+    </services_section>
+
+    <about_section>
+      - Section title: "Meet Punit Bahri, CPA"
+      - Professional bio highlighting 20 years of experience
+      - Professional headshot image at /punit-bahri.jpg (placed in public/ folder)
+      - Key credentials and areas of expertise listed
+      - Personal statement about commitment to clients
+    </about_section>
+
+    <why_choose_us>
+      - Section title: "Why Choose Bahri Associates"
+      - 4 differentiator cards with icons:
+        1. 20 Years of Expertise - deep experience across industries
+        2. Tailored Solutions - customized strategies for each client
+        3. Proactive Planning - forward-thinking financial guidance
+        4. Transparent Communication - clear, honest, and responsive service
+    </why_choose_us>
+
+    <testimonials_section>
+      - Section title: "What Our Clients Say"
+      - 3 placeholder testimonial cards with:
+        - Client quote text
+        - Client name and title (placeholder)
+        - 5-star rating display
+      - Quotation mark accent styling on cards
+    </testimonials_section>
+
+    <contact_section>
+      - Section title: "Get In Touch"
+      - Contact form with fields: Full Name, Email, Phone, Subject, Message
+      - Client-side form validation (required fields, email format, phone format)
+      - Server-side validation and sanitization
+      - Submit button with loading/disabled state during submission
+      - Success message after successful submission
+      - Error message on failure
+      - Contact info displayed alongside form: address, phone, email
+      - Business hours display
+      - Placeholder map or location indicator
+    </contact_section>
+
+    <footer>
+      - Firm name "Bahri Associates" and short tagline
+      - Quick navigation links to all sections
+      - Contact info: placeholder address, phone, email
+      - Social media icon links: LinkedIn, Facebook, Instagram (placeholder URLs)
+      - Copyright notice with dynamic current year
+    </footer>
+
+    <general_ux>
+      - Smooth scroll behavior for all navigation
+      - Scroll-to-top button appears after scrolling past hero
+      - Fade-in animations on scroll for each section (Framer Motion)
+      - Fully responsive across desktop (1920px), tablet (768px), and mobile (375px)
+      - No horizontal overflow on any viewport
+    </general_ux>
+  </core_features>
+
+  <database_schema>
+    <tables>
+      <contact_submissions>
+        - id (INTEGER PRIMARY KEY AUTOINCREMENT)
+        - full_name (TEXT NOT NULL)
+        - email (TEXT NOT NULL)
+        - phone (TEXT)
+        - subject (TEXT)
+        - message (TEXT NOT NULL)
+        - created_at (DATETIME DEFAULT CURRENT_TIMESTAMP)
+      </contact_submissions>
+    </tables>
+  </database_schema>
+
+  <api_endpoints_summary>
+    <contact>
+      - POST /api/contact - Submit contact form data
+    </contact>
+  </api_endpoints_summary>
+
+  <ui_layout>
+    <main_structure>
+      Single-page layout with vertically stacked full-width sections. Fixed header at top with transparent-to-solid background on scroll. Sections flow: Hero, Services, About, Why Choose Us, Testimonials, Contact, Footer. Each section uses a centered max-width content container (max-w-6xl).
+    </main_structure>
+  </ui_layout>
+
+  <design_system>
+    <color_palette>
+      - Primary: Dark Navy (#1B2A4A)
+      - Accent: Gold (#C9A84C)
+      - Background Light: White (#FFFFFF)
+      - Background Alt: Off-white (#F8F9FA)
+      - Text Primary: Dark charcoal (#2D2D2D)
+      - Text Secondary: Medium gray (#6B7280)
+      - Text on Dark: White (#FFFFFF)
+      - Error: Red (#EF4444)
+      - Success: Green (#10B981)
+    </color_palette>
+    <typography>
+      - Headings: Playfair Display (serif) - professional and traditional
+      - Body: Inter (sans-serif) - clean and readable
+      - Font sizes follow standard Tailwind scale
+    </typography>
+    <style_notes>
+      - Elegant, modern design conveying trust and professionalism
+      - Generous whitespace between sections (py-20 or more)
+      - Subtle scroll animations (fade up, slide in)
+      - Gold accents for CTAs, borders, highlights, and hover states
+      - High contrast for accessibility
+      - Card-based layouts with soft shadows (shadow-lg)
+      - Rounded corners on cards and buttons (rounded-lg)
+    </style_notes>
+  </design_system>
+
+  <implementation_steps>
+    <step number="1">
+      <title>Project Setup</title>
+      <tasks>
+        - Initialize React + Vite frontend project
+        - Configure Tailwind CSS with custom color palette
+        - Set up Express backend with SQLite
+        - Add Google Fonts (Playfair Display, Inter)
+        - Install Framer Motion
+      </tasks>
+    </step>
+    <step number="2">
+      <title>Header & Navigation</title>
+      <tasks>
+        - Build fixed header with logo and nav links
+        - Implement smooth scroll navigation
+        - Build mobile hamburger menu
+        - Add active section highlighting on scroll
+        - Header background transition on scroll
+      </tasks>
+    </step>
+    <step number="3">
+      <title>Hero Section</title>
+      <tasks>
+        - Create hero with headline, subheadline, and CTA buttons
+        - Style background with navy/gold gradient
+        - Add entrance animations
+      </tasks>
+    </step>
+    <step number="4">
+      <title>Services Section</title>
+      <tasks>
+        - Build responsive 6-card service grid
+        - Add icons for each service
+        - Implement hover effects
+        - Add scroll-reveal animations
+      </tasks>
+    </step>
+    <step number="5">
+      <title>About & Why Choose Us</title>
+      <tasks>
+        - Build about section with CPA bio and photo placeholder
+        - Build 4 differentiator cards
+        - Style both sections with scroll animations
+      </tasks>
+    </step>
+    <step number="6">
+      <title>Testimonials</title>
+      <tasks>
+        - Build 3 testimonial cards with placeholder content
+        - Style with quotation accents and star ratings
+      </tasks>
+    </step>
+    <step number="7">
+      <title>Contact Section & Backend</title>
+      <tasks>
+        - Build contact form with client-side validation
+        - Implement POST /api/contact endpoint
+        - Connect form to backend API
+        - Add success/error feedback
+        - Display contact info alongside form
+      </tasks>
+    </step>
+    <step number="8">
+      <title>Footer & Final Polish</title>
+      <tasks>
+        - Build footer with links and social icons
+        - Add scroll-to-top button
+        - Implement all scroll animations site-wide
+        - Responsive testing and final polish
+      </tasks>
+    </step>
+  </implementation_steps>
+
+  <success_criteria>
+    <functionality>
+      All navigation smooth-scrolls correctly, contact form submits to backend and stores data, all sections render with correct content, mobile menu works
+    </functionality>
+    <user_experience>
+      Smooth scrolling, fully responsive on desktop/tablet/mobile, fast page load, intuitive single-page layout
+    </user_experience>
+    <technical_quality>
+      Clean React component structure, no console errors, form validation works client and server side, API handles errors gracefully
+    </technical_quality>
+    <design_polish>
+      Professional dark navy/gold aesthetic, Playfair Display headings with Inter body text, subtle scroll animations, generous whitespace, conveys trust and attention to detail
+    </design_polish>
+  </success_criteria>
+</project_specification>

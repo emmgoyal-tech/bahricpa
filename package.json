@@ -1,0 +1,13 @@
+{
+  "name": "bahricpa",
+  "version": "1.0.0",
+  "description": "A modern, professional single-page website for Bahri Associates, a CPA firm led by Punit Bahri with 20 years of experience in Great Neck, NY.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
