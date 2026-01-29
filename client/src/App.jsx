@@ -1,11 +1,25 @@
-function App() {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <h1 className="text-4xl font-bold" style={{ fontFamily: "'Playfair Display', serif" }}>
-        Bahri Associates
-      </h1>
-    </div>
-  )
-}
+import Header from './components/Header';
+import Hero from './components/Hero';
+import Services from './components/Services';
+import About from './components/About';
+import WhyUs from './components/WhyUs';
+import Testimonials from './components/Testimonials';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 
-export default App
+export default function App() {
+  return (
+    <div className="min-h-screen bg-white">
+      <Header />
+      <Hero />
+      <Services />
+      <About />
+      <WhyUs />
+      <Testimonials />
+      <Contact />
+      <Footer />
+      <ScrollToTop />
+    </div>
+  );
+}
